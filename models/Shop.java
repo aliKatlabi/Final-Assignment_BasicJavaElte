@@ -226,11 +226,7 @@ public class Shop{
 		
 	}
 	
-	public void register(Product p){
-		
-		productsList.add(p);
-		
-	}
+	
 	
 	
 	

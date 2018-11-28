@@ -24,9 +24,9 @@ public class Shop{
 	
 	public Shop(){
 		
-		productsList		= 		new ArrayList<Product>;
-		prizeTicketList 	=		new ArrayList<>;
-		beingsList 			= 		new ArrayList<>;
+		productsList		= 		new ArrayList<Product>();
+		prizeTicketList 	=		new ArrayList<GoldenTicket>();
+		beingsList 			= 		new ArrayList<Being>();
 		
 	}
 	

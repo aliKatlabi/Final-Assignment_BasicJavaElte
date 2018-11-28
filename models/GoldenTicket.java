@@ -1,4 +1,4 @@
-package factory;
+package models;
 
 import java.util.Date;
 
@@ -67,7 +67,7 @@ public class GoldenTicket{
 	
 	public String toString(){
 		
-		return this.code +":on:"+ this.raffled.toString;
+		return this.code +":on:"+ (this.raffled).toString();
 	}
 	
 	

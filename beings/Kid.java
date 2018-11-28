@@ -8,7 +8,7 @@ import java.text.ParseException;
 
 import java.util.ArrayList;
 
-import factory.Product;
+import models.Product;
 
 public class Kid extends Being{
 	
@@ -81,9 +81,9 @@ public class Kid extends Being{
 		
 	}
 	
-	public void purchase(Object p) throws Exception {
+	public void purchase(Object p) {
 		
-		if(		p!=null 	&& 	P instanceof Product /*p.getClass() != this.class */){
+		if(		p!=null 	&& p.getClass() != Product.class ){
 			
 		purchases.add((Product)p);
 		
@@ -111,9 +111,10 @@ public class Kid extends Being{
 	
 	public String toString(){
 		
-		return super.toString+" birth date: "+this.birthDay.toString +" place of birth: "+this.placeOfBirth;
-		
-	}
+		return 	super.toString()+
+				" birth date: "+this.birthDay.toString()+
+				" place of birth: "+this.placeOfBirth;
+		}
 	
 	
 }

@@ -22,7 +22,7 @@ public class userInterface{
 			
 			System.out.printf("%nChoose from..%n%n1.Register Prize tickets%n2.List all prize tickets%n3.List only raffled tickets%n4.Create a new Oompa Loompa song%n");
 			
-			System.out.printf("5.Register Beings%n6.Register Products%n7.Ruffle tickets%n8.Register sale%n9.List winners%n10.Exit%n");
+			System.out.printf("5.Process Beings%n6.Process Products%n7.Ruffle tickets%n8.Register sale%n9.List winners%n10.Exit%n");
 			
 			int n = input.nextInt();
 			
@@ -51,9 +51,9 @@ public class userInterface{
 						break;
 				
 				case 5:
-						System.out.printf("1.kid%n2.oompaLoompa%n");
-						int ans = input.nextInt();
-						if(ans==1){
+						System.out.printf("1.register kid%n2. register oompaLoompa%n#.list beings%n");
+						int ans1 = input.nextInt();
+						if(ans1==1){
 							
 							
 							System.out.print("Code : ");
@@ -77,7 +77,7 @@ public class userInterface{
 							
 							}catch(Exception ParseException){System.out.println("unparsable");}
 						}
-						if(ans==2){
+						if(ans1==2){
 							
 							
 							System.out.print("Code : ");
@@ -100,28 +100,38 @@ public class userInterface{
 							
 							
 						}
-						else{
+						
+						if(ans1==3){
 							
-							System.out.println("Choose either Kid or OompaLoompa");
-							
+							shop.listBeings();
 						}
 						
 						break;
 				
 				case 6:
-						System.out.print("barcode : ");
-						
-						long barcode	= input.nextLong();
-						
-						System.out.print("serial Number : ");
-						
-						String SN	=	input.next();
-						
-						System.out.print("product decription : ");
-						
-						String decription	=	input.next();
-						
-						shop.registerProducts(new Product(decription,barcode,SN));
+						System.out.printf("1.register Product %n2.List products %n");
+						int ans2 = input.nextInt();
+						if(ans2==1){
+							System.out.print("barcode : ");
+							
+							long barcode	= input.nextLong();
+							
+							System.out.print("serial Number : ");
+							
+							String SN	=	input.next();
+							
+							System.out.print("product decription : ");
+							
+							String decription	=	input.next();
+							
+							shop.registerProducts(new Product(decription,barcode,SN));
+						}
+						if(ans2==2){
+							
+							shop.listProducts();
+							
+						}
+						break;
 				
 				case 7:
 						
@@ -135,7 +145,7 @@ public class userInterface{
 						}else{
 							//todo
 						};
-						
+						break;
 						
 				case 8:
 						System.out.print("User Code : ");
@@ -147,6 +157,8 @@ public class userInterface{
 						long productBarCode =input.nextLong();
 							
 						shop.makeSall(userCode,productBarCode);
+						
+						break;
 				
 				case 9:
 						shop.winnerkids();

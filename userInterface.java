@@ -86,7 +86,7 @@ public class userInterface{
 										shop.registerBeing(new Kid(code,name,birthDay,placeOfBirth));
 										
 										}catch(Exception ParseException){
-											System.out.println("unparsable");}
+											System.out.println("Date_Formate:dd.mm.yyy");}
 										
 										
 									}
@@ -165,7 +165,7 @@ public class userInterface{
 										
 										System.out.println("... done ruffling !");
 										
-										input.close();
+										
 									}else{
 										System.out.println("... fail : ruffle again !");
 									}

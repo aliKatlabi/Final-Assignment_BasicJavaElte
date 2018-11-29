@@ -72,7 +72,10 @@ public class Product{
 	
 	public String toString(){
 		
-		return this.barcode + this.serialNumber + this.description +"%nPrize Ticket "+ prizeTicket ;
+		return 	 this.barcode +":" 
+				+this.serialNumber+":" 
+				+ this.description +":Prize Ticket:"
+				+ prizeTicket;
 	}
 	
 	

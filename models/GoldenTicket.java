@@ -67,7 +67,11 @@ public class GoldenTicket{
 	
 	public String toString(){
 		
-		return this.code +":on:"+ (this.raffled).toString();
+		if(this!=null){
+				return this.code +":on:"+ (this.raffled).toString();
+		}else{
+				return "No prize ticket";
+		}
 	}
 	
 	

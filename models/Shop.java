@@ -56,7 +56,7 @@ public class Shop{
 	//NOT USED
 	public void ruffleGeneratedTickets(int ticketsNum) throws ParseException {
 		
-		for(int v : pickDifferentProducts(ticketsNum)){
+		for(int v : pickRandom(ticketsNum)){
 			
 			
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yyMMddHHmm");
@@ -75,9 +75,9 @@ public class Shop{
 	public boolean ruffleTickets(int ticketsNum) {
 		int i=-1;
 		
-		if(prizeTicketList.size()>ticketsNum){
+		if(prizeTicketList.size()>=ticketsNum){
 			
-				for(int v : pickDifferentProducts(ticketsNum)){
+				for(int v : pickRandom(ticketsNum)){
 					i++;
 					productsList.get(v).setPrizeTicket(prizeTicketList.get(i));
 					}
@@ -91,9 +91,9 @@ public class Shop{
 	}
 	
 	
-	public ArrayList<Integer> pickDifferentProducts(int ticketsNum){
+	public ArrayList<Integer> pickRandom(int ticketsNum){
 		
-		if(ticketsNum>0&&ticketsNum<productsList.size())
+		if(ticketsNum	>0	&&	ticketsNum	<=	productsList.size()	)
 			
 		{
 			
@@ -106,7 +106,7 @@ public class Shop{
 				index.add(rand.nextInt(productsList.size()));
 					
 				
-				while(index.size()<=ticketsNum){
+				while(index.size()<ticketsNum){
 				
 					int newV	=	rand.nextInt(productsList.size());
 					
@@ -169,9 +169,11 @@ public class Shop{
 		
 		for(Being being : this.beingsList){
 			
-			if(being instanceof Kid ){
+			if(being instanceof Kid && ((Kid)being).getCode()==userCode){
 				
 				((Kid)being).purchase(sell(productBarCode));
+				
+				break;
 			
 			
 			}
@@ -195,6 +197,22 @@ public class Shop{
 		
 		}
 	}
+	public void listBeings(){
+		
+		if(beingsList.size()>0){
+			
+			for(Being B : beingsList ){
+			
+			System.out.println(B);
+			
+			}
+			
+		}else{
+			
+		System.out.println("no beings found!");
+		
+		}
+	}
 	
 	
 	public void listRaffledTickets(){
@@ -205,6 +223,23 @@ public class Shop{
 				
 				System.out.println(product.getPrizeTicket());
 			}
+		}
+	}
+	
+	public void listProducts(){
+		
+		if(productsList.size()!=0){
+			
+			for(Product p : productsList ){
+			
+			System.out.println(p);
+			
+			}
+			
+		}else{
+			
+		System.out.println("no products found!");
+		
 		}
 	}
 	

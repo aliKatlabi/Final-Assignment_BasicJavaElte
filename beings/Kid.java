@@ -17,20 +17,7 @@ public class Kid extends Being{
 	private ArrayList<Product> purchases;
 	
 	private String placeOfBirth;
-	
-	public Kid(int code,String name,String date , ArrayList<Product> list , String place)throws ParseException {
-		
-		super(code,name);
-		
-		SimpleDateFormat bdFormat = new SimpleDateFormat("yyyy.mm.dd");
-	
-		this.birthDay			=		bdFormat.parse(date);
-		
-		this.purchases			=		list;
-		
-		this.placeOfBirth		= 		place;	
-		
-	}
+
 	public Kid(int code, String name , String date , String place)throws ParseException{
 		
 		super(code,name);
@@ -81,13 +68,10 @@ public class Kid extends Being{
 		
 	}
 	
-	public void purchase(Object p) {
+	public void purchase(Product p) {
 		
-		if(		p!=null 	&& p.getClass() != Product.class ){
 			
-		purchases.add((Product)p);
-		
-		}
+		purchases.add(p);
 		
 		
 	}
@@ -101,9 +85,14 @@ public class Kid extends Being{
 				return true;
 				
 			}
+			else{
+				
+				return false;
+			}
 		}
-		
 		return false;
+		
+		
 	}
 	
 	
@@ -112,8 +101,9 @@ public class Kid extends Being{
 	public String toString(){
 		
 		return 	super.toString()+
-				" birth date: "+this.birthDay.toString()+
-				" place of birth: "+this.placeOfBirth;
+				" birth date: "		+this.birthDay.toString()+
+				" place of birth: "	+this.placeOfBirth+":"+
+				((this.hasGoldenTicket())?"Golden":" ");
 		}
 	
 	

@@ -50,12 +50,15 @@ public abstract class Being{
 	public boolean equals(Object that){
 		
 		if(that==null){
+			
 			return false;
 		}
 		if(this==(Being)that){
+			
 			return true;
 		}
 		if(that instanceof Being)
+			
 			return this.name.equals(((Being)that).name)&&this.code==((Being)that).code;
 		
 		return false;

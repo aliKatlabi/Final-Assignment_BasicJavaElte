@@ -41,6 +41,14 @@ public class OompaLoompa extends Being{
 		
 	}
 	
+	@Override
+	
+	public String toString(){
+		
+		return 	super.toString()+"\n"+
+						"height:"	    +this.height+
+						"favorite Food: "		+this.favorateFood;
+		}
 	
 	
 }

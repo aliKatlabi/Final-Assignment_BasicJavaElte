@@ -50,7 +50,7 @@ public class Kid extends Being{
 	
 	public void setBirthDay(String date) throws ParseException{
 		
-		SimpleDateFormat bdFormat	= 	new SimpleDateFormat("yyyy.mm.dd");
+		SimpleDateFormat bdFormat	= 		new SimpleDateFormat("yyyy.mm.dd");
 	
 		this.birthDay				=		bdFormat.parse(date);
 		
@@ -64,7 +64,7 @@ public class Kid extends Being{
 	
 	public void setPlaceOfBirth(String place){
 	
-		this.placeOfBirth=place;
+		this.placeOfBirth			=		place;
 		
 	}
 	
@@ -100,10 +100,11 @@ public class Kid extends Being{
 	
 	public String toString(){
 		
-		return 	super.toString()+
-				" birth date: "		+this.birthDay.toString()+
-				" place of birth: "	+this.placeOfBirth+":"+
-				((this.hasGoldenTicket())?"Golden":" ");
+		return 	super.toString()+"\n"+
+				" birthD: "	+this.birthDay.toString()+
+				" born: "	+this.placeOfBirth+
+				((this.hasGoldenTicket())?":Golden":" ")+"\nPuchases:"+
+				this.getPurchaseList();
 		}
 	
 	

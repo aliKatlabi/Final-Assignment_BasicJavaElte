@@ -265,10 +265,9 @@ public class Shop{
 	
 	public void registerProducts(Product p){
 		
-		this.productsList.add(p);
+  this.productsList.add(p);
 	
 	
-}
 	
 	
 	

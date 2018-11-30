@@ -2,7 +2,7 @@ package songs;
 
 import java.util.ArrayList;
 
-import java.io.BufferedReader;
+import java.util.Scanner;
 
 import java.io.FileReader;
 
@@ -10,26 +10,59 @@ import java.io.IOException;
 
 import java.io.FileNotFoundException;
 
+import java.util.Random;
+
+import java.io.FileInputStream;
+
+import models.RandomList;
+
+
 public class OompaLoompaSong{
 	
 	
-	private ArrayList<String> song;
+	private ArrayList<String> song = new ArrayList<>();
+	
+	private int linesNo ;
 	
 	public OompaLoompaSong(int linesNum)throws FileNotFoundException,IOException{
+	
+		this.linesNo		=	linesNum;
 		
-		BufferedReader br  = new BufferedReader(new FileReader("OompaLoompaSong.txt"));
-		String line;
-		while((line=br.readLine())!=null){
-			song.add(line);
+		Scanner scanner 	= 	new Scanner(new FileInputStream("OompaLoompaSong.txt"));
+		
+		while(scanner.hasNextLine()){
+			
+			song.add(	scanner.nextLine()	);
+			
 		}
+		
+		scanner.close();
+		
 	}
 	
 	
 	public String sing(){
 		
+		String newSong	=	"";
+		
+		RandomList RL	= 	new RandomList(linesNo,song.size());
+		
+		
+		if(RL.getRandomIndices()==null){
+			
+			return "Under"+song.size()+" !\n";
+			
+		}
+		for(int i: RL.getRandomIndices() ){
+			
+			newSong +=	song.get(i) + "\n";
+		}
+		
+		return newSong;
 		
 		
 	}
+
 	
 	
 }

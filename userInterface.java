@@ -5,10 +5,15 @@ import models.*;
 
 import beings.*;
 
+import songs.*;
+
 import java.lang.Exception;
 
 import java.util.InputMismatchException;
 
+import java.io.IOException;
+
+import java.io.FileNotFoundException; 
 
 public class userInterface{
 	
@@ -57,7 +62,25 @@ public class userInterface{
 								
 								break;
 						case 4:
-						
+								System.out.println("number of lines ?");
+								
+								int lineNo = input.nextInt();
+								try{
+							
+								OompaLoompaSong OS = new OompaLoompaSong(lineNo);
+								
+								String newSong=OS.sing();
+								
+								System.out.print(newSong);
+								
+								}catch(FileNotFoundException e){
+									
+									System.out.print("file");
+									
+								}catch(IOException e){
+									
+									System.out.print("io");
+								}
 								break;
 						
 						case 5:
@@ -167,7 +190,9 @@ public class userInterface{
 										
 										
 									}else{
+										
 										System.out.println("... fail : ruffle again !");
+								
 									}
 								
 								break;
@@ -194,6 +219,7 @@ public class userInterface{
 								
 						case 10:
 								input.close();
+								
 								noExit=false;
 								
 								break;
@@ -208,12 +234,7 @@ public class userInterface{
 								
 								input.next();
 								
-							}catch(Exception e){
-								
-								System.out.println("unexpected Error!");
-								
-								input.next();
-						}
+							}
 		}
 	}
 }

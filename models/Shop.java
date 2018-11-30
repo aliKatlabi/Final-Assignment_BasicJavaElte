@@ -265,10 +265,15 @@ public class Shop{
 	
 	public void registerProducts(Product p){
 		
+<<<<<<< HEAD
 		this.productsList.add(p);
+=======
+		productsList.add(p);
+		
+	}
+>>>>>>> master
 	
 	
-}
 	
 	
 	

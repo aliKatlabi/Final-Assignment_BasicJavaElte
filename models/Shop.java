@@ -10,6 +10,9 @@ import java.text.SimpleDateFormat;
 
 import java.text.ParseException;
 
+import beings.Being;
+
+import beings.Kid;
 
 public class Shop{
 	
@@ -19,7 +22,13 @@ public class Shop{
 	
 	private ArrayList<Being> beingsList;
 	
-	public Shop(){}
+	public Shop(){
+		
+		productsList		= 		new ArrayList<Product>();
+		prizeTicketList 	=		new ArrayList<GoldenTicket>();
+		beingsList 			= 		new ArrayList<Being>();
+		
+	}
 	
 	public void setProductsList( ArrayList<Product> p){
 		
@@ -44,13 +53,13 @@ public class Shop{
 	
 	
 
-
+	//NOT USED
 	public void ruffleGeneratedTickets(int ticketsNum) throws ParseException {
 		
-		for(int v : pickDifferentProducts(ticketsNum)){
+		for(int v : pickRandom(ticketsNum)){
 			
 			
-			SimpleDateFormat dateFormat = new SimpleDateFormat("yyMMddHHmm");
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyMMddHHmm"+":GT:Generated");
 			
 			Date date		    =	 new Date();
 			
@@ -63,14 +72,16 @@ public class Shop{
 	}
 	
 	
-	public boolean ruffleTickets(int ticketsNum) throws ParseException {
+	public boolean ruffleTickets(int ticketsNum) {
 		int i=-1;
 		
-		if(prizeTicketList.size()>ticketsNum){
+		if(prizeTicketList.size()>=ticketsNum){
 			
-				for(int v : pickDifferentProducts(ticketsNum)){
+				for(int v : pickRandom(ticketsNum)){
 					
-					productsList.get(v).setPrizeTicket(prizeTicketList[i++]);
+					i++;
+					
+					productsList.get(v).setPrizeTicket(prizeTicketList.get(i));
 					}
 				return true;
 					
@@ -78,13 +89,13 @@ public class Shop{
 			
 			return false;
 		}
-		return false;
+		
 	}
 	
 	
-	public ArrayList<Integer> pickDifferentProducts(int ticketsNum){
+	public ArrayList<Integer> pickRandom(int ticketsNum){
 		
-		if(ticketsNum>0&&ticketsNum<productsList.size())
+		if(ticketsNum	>0	&&	ticketsNum	<=	productsList.size()	)
 			
 		{
 			
@@ -97,7 +108,7 @@ public class Shop{
 				index.add(rand.nextInt(productsList.size()));
 					
 				
-				while(index.size()<=ticketsNum){
+				while(index.size()<ticketsNum){
 				
 					int newV	=	rand.nextInt(productsList.size());
 					
@@ -140,9 +151,9 @@ public class Shop{
 	
 	public Product sell(long productBarCode){
 		
-		for(product : productsList){
+		for(Product product : this.productsList){
 					
-					if(product.barCode==productBarCode){
+					if(product.getBarCode()==productBarCode){
 						
 						productsList.remove(product);
 						
@@ -158,12 +169,15 @@ public class Shop{
 	
 	public void makeSall(int userCode,long productBarCode){
 		
-		for(being : beingsList){
+		for(Being being : this.beingsList){
 			
-			if(being instanceof Kid ){
+			if(being instanceof Kid && ((Kid)being).getCode()==userCode){
 				
-						being.purchase(sell(productBarCode));
-						
+				((Kid)being).purchase(sell(productBarCode));
+				
+				break;
+			
+			
 			}
 		}
 	}
@@ -173,9 +187,9 @@ public class Shop{
 		
 		if(prizeTicketList.size()!=0){
 			
-			for( v : prizeTicketList ){
+			for(GoldenTicket gt : prizeTicketList ){
 			
-			System.out.println(v);
+			System.out.println(gt);
 			
 			}
 			
@@ -185,16 +199,49 @@ public class Shop{
 		
 		}
 	}
+	public void listBeings(){
+		
+		if(beingsList.size()>0){
+			
+			for(Being B : beingsList ){
+			
+			System.out.println(B);
+			
+			}
+			
+		}else{
+			
+		System.out.println("no beings found!");
+		
+		}
+	}
 	
 	
 	public void listRaffledTickets(){
 		
-		for( product : productsList){
+		for(Product product : productsList){
 			
 			if(product.isGolden()){
 				
-				System.out.println(product.prizeTicket);
+				System.out.println(product.getPrizeTicket());
 			}
+		}
+	}
+	
+	public void listProducts(){
+		
+		if(productsList.size()!=0){
+			
+			for(Product p : productsList ){
+			
+			System.out.println(p);
+			
+			}
+			
+		}else{
+			
+		System.out.println("no products found!");
+		
 		}
 	}
 	
@@ -203,11 +250,7 @@ public class Shop{
 	public void registerPrizeTicket(String Code){
 			
 		
-		Date date		    =	 new Date();
-		
-		GoldenTicket newPrizeTicket = new GoldenTicket(Code,date);
-		
-		prizeTicketList.add(newPrizeTicket);
+		prizeTicketList.add(new GoldenTicket(Code,new Date()));
 		
 	}
 	
@@ -222,9 +265,7 @@ public class Shop{
 	
 	public void registerProducts(Product p){
 		
-		productsList.add(p);
-		
-	}
+  this.productsList.add(p);
 	
 	
 	
@@ -234,13 +275,13 @@ public class Shop{
 	
 	public void winnerkids(){
 		
-		for(being : beingsList){
+		for(Being being : beingsList){
 			
-			if(being instanceof Kid ){
+			if(being instanceof Kid) {
 				
-				if(being.hasGoldenTicket()){
+				if(		((Kid)being).hasGoldenTicket()		){
 					
-					System.out.println(being);
+					System.out.println((Kid)being);
 				}
 			}
 		}

@@ -51,11 +51,9 @@ public class Shop{
 		
 	}
 	
-	//kid.puchase(Product sell(long barCode));
 	
 	
-	
-
+	/*
 	//NOT USED
 	public void ruffleGeneratedTickets(int ticketsNum) throws ParseException {
 		
@@ -73,6 +71,7 @@ public class Shop{
 		}
 		
 	}
+	*/
 	
 	
 	public boolean ruffleTickets(int ticketsNum) {
@@ -101,60 +100,6 @@ public class Shop{
 	}
 	
 	
-	public ArrayList<Integer> pickRandom(int ticketsNum){
-		
-		if(ticketsNum	>0	&&	ticketsNum	<=	productsList.size()	)
-			
-		{
-			
-				Random rand = new Random();
-				
-				boolean isDifferentIndex ;
-				
-				ArrayList<Integer> index=new ArrayList<>();
-				
-				index.add(rand.nextInt(productsList.size()));
-					
-				
-				while(index.size()<ticketsNum){
-				
-					int newV	=	rand.nextInt(productsList.size());
-					
-					isDifferentIndex =true;
-					
-					for(int v : index )
-					{
-						
-									if(v==newV)
-									{
-										
-										isDifferentIndex=isDifferentIndex&&false;
-										
-										break;
-									}
-									else
-									{
-										
-											isDifferentIndex=isDifferentIndex&&true;
-											
-									}
-					}
-						  
-						  
-							if(isDifferentIndex){
-								
-								index.add(newV);
-								
-							}
-				}
-				
-				return index;
-		}
-		
-		return null;
-		
-		
-		}
 	
 	
 	public Product sell(long productBarCode){
@@ -167,6 +112,9 @@ public class Shop{
 						
 						return product;
 						
+					}else{
+						
+						System.out.println("Check product barCode!");
 					}
 		}
 					
@@ -175,18 +123,30 @@ public class Shop{
 	}
 	
 	
-	public void makeSall(int userCode,long productBarCode){
+	public void  makeSall(int userCode,long productBarCode){
 		
 		for(Being being : this.beingsList){
 			
-			if(being instanceof Kid && ((Kid)being).getCode()==userCode){
+			if( being instanceof Kid	){
 				
-				((Kid)being).purchase(sell(productBarCode));
+				if(		((Kid)being).getCode()==userCode	){
+					
+						((Kid)being).purchase(sell(productBarCode));
+						
+						break;
+				}else{
+					
 				
-				break;
+					
+					System.out.println("Check User Code!");
+				}
 			
 			
+			}else{
+				
+				System.out.println("sale can not be made");
 			}
+			
 		}
 	}
 		

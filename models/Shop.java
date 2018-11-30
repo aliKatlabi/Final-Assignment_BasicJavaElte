@@ -14,6 +14,9 @@ import beings.Being;
 
 import beings.Kid;
 
+import models.RandomList;
+
+
 public class Shop{
 	
 	private ArrayList<Product> productsList;
@@ -73,11 +76,16 @@ public class Shop{
 	
 	
 	public boolean ruffleTickets(int ticketsNum) {
+		
 		int i=-1;
 		
-		if(prizeTicketList.size()>=ticketsNum){
+		RandomList RL			= 	new RandomList(ticketsNum,prizeTicketList.size());
+		
+		boolean ableToRuffle    =	prizeTicketList.size()>=ticketsNum && ticketsNum <=productsList.size();
+		
+		if(ableToRuffle){
 			
-				for(int v : pickRandom(ticketsNum)){
+				for(int v : RL.getRandomIndices()){
 					
 					i++;
 					
@@ -240,7 +248,7 @@ public class Shop{
 			
 		}else{
 			
-		System.out.println("no products found!");
+		System.out.println("empty stock!");
 		
 		}
 	}
@@ -265,13 +273,12 @@ public class Shop{
 	
 	public void registerProducts(Product p){
 		
-<<<<<<< HEAD
+
 		this.productsList.add(p);
-=======
-		productsList.add(p);
+
 		
 	}
->>>>>>> master
+
 	
 	
 	

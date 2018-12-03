@@ -106,15 +106,12 @@ public class Shop{
 		
 		for(Product product : this.productsList){
 					
-					if(product.getBarCode()==productBarCode){
+					if(product.getBarCode()== productBarCode){
 						
 						productsList.remove(product);
 						
 						return product;
 						
-					}else{
-						
-						System.out.println("Check product barCode!");
 					}
 		}
 					
@@ -134,19 +131,10 @@ public class Shop{
 						((Kid)being).purchase(sell(productBarCode));
 						
 						break;
-				}else{
-					
-				
-					
-					System.out.println("Check User Code!");
 				}
 			
-			
-			}else{
-				
-				System.out.println("sale can not be made");
+	
 			}
-			
 		}
 	}
 		

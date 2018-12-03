@@ -97,7 +97,7 @@ public class userInterface{
 										
 										String name =input.next();
 										
-										System.out.print("birth day : ");
+										System.out.print("birth day (dd.mm.yyyy): ");
 											
 										String birthDay =input.next();
 										

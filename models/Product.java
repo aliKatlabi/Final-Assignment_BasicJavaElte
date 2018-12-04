@@ -65,7 +65,7 @@ public class Product{
 	
 	public boolean isGolden(){
 		
-		return (	this.prizeTicket	!=	null	)?true:false;
+		return (	prizeTicket	!=	null	)?true:false;
 	}
 	
 	@Override

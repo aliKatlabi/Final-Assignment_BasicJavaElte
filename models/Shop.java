@@ -175,7 +175,7 @@ public class Shop{
 	
 	public void listRaffledTickets(){
 		
-		for(Product product : productsList){
+		for(Product product : this.productsList){
 			
 			if(product.isGolden()){
 				

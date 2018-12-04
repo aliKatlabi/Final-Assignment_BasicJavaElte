@@ -53,7 +53,7 @@ public abstract class Being{
 			
 			return false;
 		}
-		if(this==(Being)that){
+		if(this==that){
 			
 			return true;
 		}

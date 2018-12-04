@@ -15,22 +15,24 @@ import java.io.IOException;
 
 import java.io.FileNotFoundException; 
 
-public class userInterface{
+public class UserInterface{
 	
+	static Shop shop ;
 	
 	public static void main(String[] args){
+		int cnt=0;
 		
 		boolean noExit	=	true;
 		
 		Scanner input	=	new Scanner(System.in);
 		
-		Shop shop = new Shop();
+		shop = new Shop();
 		
 		while(noExit){
 			
 			System.out.printf("%nChoose from..%n%n1.Register Prize tickets%n2.List all prize tickets%n3.List only raffled tickets%n4.Create a new Oompa Loompa song%n");
 			
-			System.out.printf("5.Process Beings%n6.Process Products%n7.Ruffle tickets%n8.Register sale%n9.List winners%n10.Exit%n");
+			System.out.printf("5.Process Beings%n6.Process Products%n7.Ruffle tickets%n8.Register sale%n9.List winners%n10.test the system %n11.Exit%n");
 		
 			try{	
 					int n = input.nextInt();
@@ -218,11 +220,40 @@ public class userInterface{
 								break;
 								
 						case 10:
+								System.out.println("populate the system with Beings Products and ticketPrizes");
+								System.out.println("Do it ? y/otherButton");
+								String ans=input.next();
+								if(cnt<1){
+								if(ans.equals("y")){
+									
+									testing();
+									
+								    System.out.println("... adding kids");
+									System.out.println("... adding OompaLoompas");
+									System.out.println("... adding Products");
+									System.out.println("... selling Products to kids");
+									System.out.println("... 3 tickets were ruffeled!");
+									System.out.println("Done..");
+									System.out.println("Now you can List Winners");
+									System.out.println("Note that since the product are sold then Option 3 wont find you the ruffeled tickets!");
+									cnt++;
+									
+								}
+								}else{System.out.println("allowed once");}
+							
+								break;
+						
+								
+						case 11:
+								
 								input.close();
 								
 								noExit=false;
 								
 								break;
+								
+								
+								
 						
 						default:
 								break;
@@ -237,4 +268,69 @@ public class userInterface{
 							}
 		}
 	}
+	
+	static void testing(){
+		shop.registerPrizeTicket("Winner1");
+		shop.registerPrizeTicket("Winner2");
+		shop.registerPrizeTicket("Winner3");
+		shop.registerPrizeTicket("Winner4");
+		
+		//Product(String desc,long bCode, String sNum )
+		Product p1=new Product("lolipop",101,"xxy");
+		shop.registerProducts(p1);
+		Product p2=new Product("Candy",101,"gty");
+		shop.registerProducts(p2);
+		Product p3=new Product("Chocolate",102,"vvf");
+		shop.registerProducts(p3);
+		Product p4=new Product("Juice",103,"bbb");
+		shop.registerProducts(p4);
+		Product p5=new Product("ApplePie",103,"qpq");
+		shop.registerProducts(p5);
+		Product p6=new Product("SurprizeEgg",104,"yyy");
+		shop.registerProducts(p6);
+		
+		//shop.ruffleTickets(rn)
+		
+		shop.ruffleTickets(3);
+		
+		//Kid(int code, String name , String date , String place)
+		try{
+		Kid k1= new Kid(1,"Somer","3.12.2003","Syria");
+		shop.registerBeing(k1);
+		Kid k2= new Kid(2,"Simon","23.1.1999","Syria");
+		shop.registerBeing(k2);
+		Kid k3= new Kid(3,"Basem","13.8.2000","Syria");
+		shop.registerBeing(k3);
+		Kid k4= new Kid(4,"Ali","4.11.2005","Syria");
+		shop.registerBeing(k4);
+		Kid k5= new Kid(5,"Kamal","17.2.2005","Syria");
+		shop.registerBeing(k5);
+		}catch(Exception ParseException){System.out.println("Date_Formate:dd.mm.yyy");}
+		//OompaLoompa(int code , String name , int height , String ff)
+		
+		OompaLoompa o1= new OompaLoompa(11,"omp",44,"Chees");
+		shop.registerBeing(o1);
+		OompaLoompa o2= new OompaLoompa(22,"domp",46,"Mashroom");
+		shop.registerBeing(o2);
+		OompaLoompa o3= new OompaLoompa(33,"lomp",51,"Candy");
+		shop.registerBeing(o3);
+		OompaLoompa o4= new OompaLoompa(44,"pomp",60,"Hony");
+		shop.registerBeing(o4);
+		
+		//shop.makeSall(userCode,productBarCode);
+		
+		shop.makeSall(1,101);
+		shop.makeSall(1,103);
+		shop.makeSall(2,101);
+		shop.makeSall(3,103);
+		shop.makeSall(4,102);
+		shop.makeSall(5,104);
+		shop.makeSall(5,103);
+		shop.makeSall(4,101);
+		shop.makeSall(2,102);
+		
+	}
+	
+	
+	
 }

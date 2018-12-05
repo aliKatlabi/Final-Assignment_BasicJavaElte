@@ -221,25 +221,17 @@ public class UserInterface{
 								
 						case 10:
 								System.out.println("populate the system with Beings Products and ticketPrizes");
-								System.out.println("Do it ? y/otherButton");
+								System.out.println("Do it ? y/n");
 								String ans=input.next();
 								if(cnt<1){
 								if(ans.equals("y")){
 									
 									testing();
 									
-								    System.out.println("... adding kids");
-									System.out.println("... adding OompaLoompas");
-									System.out.println("... adding Products");
-									System.out.println("... selling Products to kids");
-									System.out.println("... 3 tickets were ruffeled!");
-									System.out.println("Done..");
-									System.out.println("Now you can List Winners");
-									System.out.println("Note that since the product are sold then Option 3 wont find you the ruffeled tickets!");
 									cnt++;
 									
 								}
-								}else{System.out.println("allowed once");}
+								}else{System.out.println("Allowed once");}
 							
 								break;
 						
@@ -328,6 +320,22 @@ public class UserInterface{
 		shop.makeSall(5,103);
 		shop.makeSall(4,101);
 		shop.makeSall(2,102);
+		
+		double b =300000000.0;
+		System.out.println("... adding Kids");
+		for(double i=0;i<b;i++){};
+		System.out.println("... adding OompaLoompas");
+		for(double i=0;i<b;i++){};
+		System.out.println("... adding Products");
+		for(double i=0;i<b;i++){};
+		System.out.println("... 3 tickets were ruffeled!");
+		for(double i=0;i<b;i++){};
+		System.out.println("... selling Products to kids");
+		for(double i=0;i<b;i++){};
+		System.out.println("... all products are sold .. empty stock");
+		System.out.println("... Done!!");
+		System.out.println("Now you can List Winners");
+		System.out.println("Note:since it is (empty stock) then Option 3 and 7 wont work(no products to operate on) .. can be tested manually!");
 		
 	}
 	

@@ -262,10 +262,35 @@ public class UserInterface{
 	}
 	
 	static void testing(){
+		
+		double b =300000000.0;
+		
 		shop.registerPrizeTicket("Winner1");
 		shop.registerPrizeTicket("Winner2");
 		shop.registerPrizeTicket("Winner3");
 		shop.registerPrizeTicket("Winner4");
+		try{
+				Kid k1= new Kid(1,"Somer","3.12.2003","Syria");
+				shop.registerBeing(k1);
+				Kid k2= new Kid(2,"Simon","23.1.1999","Syria");
+				shop.registerBeing(k2);
+				Kid k3= new Kid(3,"Basem","13.8.2000","Syria");
+				shop.registerBeing(k3);
+				Kid k4= new Kid(4,"Ali","4.11.2005","Syria");
+				shop.registerBeing(k4);
+				Kid k5= new Kid(5,"Kamal","17.2.2005","Syria");
+				shop.registerBeing(k5);
+				
+				}catch(Exception ParseException){System.out.println("Date_Formate:dd.mm.yyy");}
+				
+		OompaLoompa o1= new OompaLoompa(11,"omp",44,"Chees");
+		shop.registerBeing(o1);
+		OompaLoompa o2= new OompaLoompa(22,"domp",46,"Mashroom");
+		shop.registerBeing(o2);
+		OompaLoompa o3= new OompaLoompa(33,"lomp",51,"Candy");
+		shop.registerBeing(o3);
+		OompaLoompa o4= new OompaLoompa(44,"pomp",60,"Hony");
+		shop.registerBeing(o4);
 		
 		//Product(String desc,long bCode, String sNum )
 		Product p1=new Product("lolipop",101,"xxy");
@@ -280,65 +305,49 @@ public class UserInterface{
 		shop.registerProducts(p5);
 		Product p6=new Product("SurprizeEgg",104,"yyy");
 		shop.registerProducts(p6);
-		
-		//shop.ruffleTickets(rn)
-		
-		shop.ruffleTickets(3);
-		
-		//Kid(int code, String name , String date , String place)
-		try{
-		Kid k1= new Kid(1,"Somer","3.12.2003","Syria");
-		shop.registerBeing(k1);
-		Kid k2= new Kid(2,"Simon","23.1.1999","Syria");
-		shop.registerBeing(k2);
-		Kid k3= new Kid(3,"Basem","13.8.2000","Syria");
-		shop.registerBeing(k3);
-		Kid k4= new Kid(4,"Ali","4.11.2005","Syria");
-		shop.registerBeing(k4);
-		Kid k5= new Kid(5,"Kamal","17.2.2005","Syria");
-		shop.registerBeing(k5);
-		}catch(Exception ParseException){System.out.println("Date_Formate:dd.mm.yyy");}
-		//OompaLoompa(int code , String name , int height , String ff)
-		
-		OompaLoompa o1= new OompaLoompa(11,"omp",44,"Chees");
-		shop.registerBeing(o1);
-		OompaLoompa o2= new OompaLoompa(22,"domp",46,"Mashroom");
-		shop.registerBeing(o2);
-		OompaLoompa o3= new OompaLoompa(33,"lomp",51,"Candy");
-		shop.registerBeing(o3);
-		OompaLoompa o4= new OompaLoompa(44,"pomp",60,"Hony");
-		shop.registerBeing(o4);
-		
-		//shop.makeSall(userCode,productBarCode);
-		
-		shop.makeSall(1,101);
-		shop.makeSall(1,103);
-		shop.makeSall(2,101);
-		shop.makeSall(3,103);
-		shop.makeSall(4,102);
-		shop.makeSall(5,104);
-		shop.makeSall(5,103);
-		shop.makeSall(4,101);
-		shop.makeSall(2,102);
-		
-		double b =300000000.0;
+		//some effects
 		System.out.println("... adding Kids");
 		for(double i=0;i<b;i++){};
 		System.out.println("... adding OompaLoompas");
 		for(double i=0;i<b;i++){};
 		System.out.println("... adding Products");
 		for(double i=0;i<b;i++){};
-		System.out.println("... 3 tickets were ruffeled!");
-		for(double i=0;i<b;i++){};
-		System.out.println("... selling Products to kids");
-		for(double i=0;i<b;i++){};
-		System.out.println("... all products are sold .. empty stock");
-		System.out.println("... Done!!");
-		System.out.println("Now you can List Winners");
-		System.out.println("Note:since it is (empty stock) then Option 3 and 7 wont work(no products to operate on) .. can be tested manually!");
+		//shop.ruffleTickets(rn)
 		
+		Scanner input = new Scanner(System.in);
+		System.out.println("Do you the system to test ruffling tickets ,selling products to kids ? y/n");
+		String ans=input.next();
+		
+		if(ans.equals("y")){
+		shop.ruffleTickets(3);
+		
+		//Kid(int code, String name , String date , String place)
+		
+				//OompaLoompa(int code , String name , int height , String ff)
+			
+				//shop.makeSall(userCode,productBarCode);
+				
+				shop.makeSall(1,101);
+				shop.makeSall(1,103);
+				shop.makeSall(2,101);
+				shop.makeSall(3,103);
+				shop.makeSall(4,102);
+				shop.makeSall(5,104);
+				shop.makeSall(5,103);
+				shop.makeSall(4,101);
+				shop.makeSall(2,102);
+				
+				
+				System.out.println("... 3 tickets were ruffeled!");
+				for(double i=0;i<b;i++){};
+				System.out.println("... selling Products to kids");
+				for(double i=0;i<b;i++){};
+				System.out.println("... all products are sold .. empty stock");
+				System.out.println("... Done!!");
+				System.out.println("Now you can List Winners");
+				System.out.println("Note:since it is (empty stock) then Option 3 and 7 wont work(no products to operate on) .. can be tested manually!");
+				}
+				
+	
 	}
-	
-	
-	
 }

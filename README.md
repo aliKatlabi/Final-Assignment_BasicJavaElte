@@ -6,15 +6,15 @@ You are requested to build up the system which will manage the kids registration
 
 The software shall implement the following items:
 
-### 1 - Register Prize tickets
-### 2 - List all prize tickets
-### 3 - List only raffled tickets
-### 4 - Create a new Oompa Loompa song
-### 5 - Register Beings
-### 6 - Register Products
-### 7 - Ruffle tickets
-### 8 - Register sale
-### 9 - List winners
+#### 1 - Register Prize tickets
+#### 2 - List all prize tickets
+#### 3 - List only raffled tickets
+#### 4 - Create a new Oompa Loompa song
+#### 5 - Register Beings
+#### 6 - Register Products
+#### 7 - Ruffle tickets
+#### 8 - Register sale
+#### 9 - List winners
 
 The class GoldenTicket should have the following methods:
 
